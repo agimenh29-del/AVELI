@@ -1,0 +1,30 @@
+[
+  {
+    "id": "p_1772755344890_3zisdt",
+    "name": "SHIRT",
+    "price": "120",
+    "description": "",
+    "stripeUrl": "https://buy.stripe.com/test_3cIbJ0aei2Px3nB2Fh1RC01",
+    "media": [
+      "/uploads/products/1772771718704-img_0632.png"
+    ],
+    "imageUrl": "/uploads/products/1772771718704-img_0632.png",
+    "status": "live",
+    "createdAt": "2026-03-06T00:02:24.890Z",
+    "updatedAt": "2026-03-06T04:40:30.308Z"
+  },
+  {
+    "id": "p_1772597827443_xu3kvy",
+    "name": "SHORT",
+    "price": "180",
+    "description": "",
+    "stripeUrl": "https://buy.stripe.com/test_3cIbJ0aei2Px3nB2Fh1RC01",
+    "media": [
+      "/uploads/products/1772772137099-img_0632-2.png"
+    ],
+    "imageUrl": "/uploads/products/1772772137099-img_0632-2.png",
+    "status": "live",
+    "createdAt": "2026-03-04T04:17:07.443Z",
+    "updatedAt": "2026-03-06T04:42:20.750Z"
+  }
+]

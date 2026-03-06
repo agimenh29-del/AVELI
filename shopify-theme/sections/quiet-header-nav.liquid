@@ -1,0 +1,48 @@
+{% liquid
+  assign menu_handle = section.settings.menu
+%}
+
+<div class="ql-nav-wrap">
+  <div class="ql-nav-logo">
+    {% if section.settings.logo != blank %}
+      {{ section.settings.logo | image_url: width: 600 | image_tag: alt: shop.name, loading: 'eager' }}
+    {% endif %}
+  </div>
+
+  <nav class="ql-nav" aria-label="primary">
+    {% if menu_handle != blank %}
+      {% for link in linklists[menu_handle].links %}
+        <a href="{{ link.url }}">{{ link.title | downcase }}</a>
+      {% endfor %}
+    {% else %}
+      <a href="{{ routes.root_url }}">home</a>
+      <a href="{{ routes.root_url }}collections/all">product</a>
+      <a href="{{ routes.root_url }}pages/archive">archive</a>
+      <a href="{{ routes.root_url }}pages/contact">contact</a>
+      <a href="{{ routes.account_login_url }}">admin</a>
+    {% endif %}
+  </nav>
+</div>
+
+{% schema %}
+{
+  "name": "Quiet Header Nav",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Quiet Header Nav"
+    }
+  ]
+}
+{% endschema %}

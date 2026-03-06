@@ -1,0 +1,39 @@
+<div class="ql-music" data-ql-player>
+  <audio preload="metadata" data-ql-audio></audio>
+
+  <div hidden>
+    {% for block in section.blocks %}
+      {% if block.settings.audio_url != blank %}
+        <span
+          data-ql-track
+          data-src="{{ block.settings.audio_url }}"
+          data-name="{{ block.settings.title | default: 'track' | escape }}"
+          {{ block.shopify_attributes }}
+        ></span>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Quiet Music",
+  "max_blocks": 40,
+  "blocks": [
+    {
+      "type": "track",
+      "name": "Track",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Track title" },
+        { "type": "url", "id": "audio_url", "label": "Audio file URL" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Quiet Music",
+      "blocks": [{ "type": "track" }]
+    }
+  ]
+}
+{% endschema %}

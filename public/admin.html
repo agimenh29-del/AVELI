@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Admin</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="site-nav">
+      <a class="nav-logo" href="/" aria-label="go to home">
+        <img src="/logo.png" alt="Brand logo" />
+      </a>
+    </div>
+    <nav class="bottom-menu" aria-label="secondary">
+      <a href="/#contact">contact</a>
+      <a href="/admin">admin</a>
+    </nav>
+    <main class="page">
+      <section class="admin-wrap" id="loginPanel">
+        <h1 style="margin-top: 0">Admin Access</h1>
+        <p class="muted">Password required.</p>
+        <label for="password">Password</label>
+        <input id="password" type="password" autocomplete="current-password" />
+        <button id="loginBtn">Enter</button>
+        <p id="loginStatus" class="muted"></p>
+      </section>
+
+      <section class="admin-wrap" id="uploadPanel" style="display: none">
+        <h1 style="margin-top: 0">Uploads</h1>
+        <p class="muted">upload campaign media and music for the live site.</p>
+
+        <div class="admin-tabs" role="tablist" aria-label="admin managers">
+          <button type="button" class="admin-tab" data-tab-target="product" role="tab" aria-selected="false">
+            product
+          </button>
+          <button type="button" class="admin-tab is-active" data-tab-target="library" role="tab" aria-selected="true">
+            library
+          </button>
+        </div>
+
+        <section class="library-wrap admin-section admin-tab-panel" data-tab-panel="product" role="tabpanel" hidden>
+          <div class="library-head admin-section-head">
+            <h2>product manager</h2>
+          </div>
+          <div class="product-form">
+            <input id="productName" type="text" placeholder="product name" />
+            <input id="productPrice" type="text" placeholder="price (ex: $180)" />
+            <input id="productDescription" type="text" placeholder="short description" />
+            <input id="productStripeUrl" type="url" placeholder="stripe checkout url" />
+            <select id="productStatus">
+              <option value="live">live</option>
+              <option value="archive">archive</option>
+            </select>
+            <input id="productMedia" type="file" multiple accept="image/*,video/*" />
+            <button id="addProductBtn" type="button">add product</button>
+          </div>
+          <div id="productLibrary" class="library-list"></div>
+        </section>
+
+        <section class="library-wrap admin-section admin-tab-panel is-active" data-tab-panel="library" role="tabpanel">
+          <div class="library-head admin-section-head">
+            <h2>library manager</h2>
+            <button id="refreshLibraryBtn" type="button">refresh</button>
+          </div>
+          <div class="row">
+            <div>
+              <label for="mediaFiles">Media (images/video/gif)</label>
+              <input id="mediaFiles" type="file" multiple accept="image/*,video/*" />
+              <button id="uploadMediaBtn">upload media</button>
+            </div>
+            <div>
+              <label for="musicFiles">Music (audio)</label>
+              <input id="musicFiles" type="file" multiple accept="audio/*" />
+              <button id="uploadMusicBtn">upload music</button>
+            </div>
+          </div>
+          <div class="library-grid">
+            <div>
+              <p class="muted">media files</p>
+              <div class="bulk-actions">
+                <button id="selectAllMediaBtn" type="button">select all</button>
+                <button id="removeSelectedMediaBtn" type="button">remove selected</button>
+                <button id="clearMediaBtn" type="button" class="danger-btn">clear all media</button>
+              </div>
+              <div id="mediaLibrary" class="library-list"></div>
+            </div>
+            <div>
+              <p class="muted">music files</p>
+              <div class="bulk-actions">
+                <button id="selectAllMusicBtn" type="button">select all</button>
+                <button id="removeSelectedMusicBtn" type="button">remove selected</button>
+                <button id="clearMusicBtn" type="button" class="danger-btn">clear all music</button>
+              </div>
+              <div id="musicLibrary" class="library-list"></div>
+            </div>
+          </div>
+        </section>
+
+        <div class="admin-footer">
+          <button id="logoutBtn">logout</button>
+          <p id="uploadStatus" class="muted"></p>
+        </div>
+      </section>
+    </main>
+
+    <script src="/nav.js"></script>
+    <script src="/admin.js"></script>
+  </body>
+</html>

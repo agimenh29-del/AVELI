@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>AVELI Product</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="site-nav">
+      <a class="nav-logo" href="/" aria-label="go to home">
+        <img src="/logo.png" alt="Brand logo" />
+      </a>
+    </div>
+    <nav class="bottom-menu" aria-label="secondary">
+      <a href="/#contact">contact</a>
+      <a href="/admin">admin</a>
+    </nav>
+
+    <section id="product" class="product-section">
+      <p class="sound-title">products</p>
+      <div id="productGrid" class="product-grid"></div>
+    </section>
+    <section id="archive" class="product-section">
+      <p class="sound-title">archive</p>
+      <div id="archiveGrid" class="product-grid"></div>
+    </section>
+    <section class="sound-strip" hidden>
+      <audio id="musicPlayer" preload="metadata"></audio>
+    </section>
+
+    <div id="productModal" class="product-window" hidden>
+      <div id="productWindowHeader" class="product-window-header">
+        <h2 id="productModalTitle" class="product-modal-title"></h2>
+        <button id="productModalClose" type="button" class="product-modal-close">close</button>
+      </div>
+      <p id="productModalMeta" class="product-modal-meta"></p>
+      <div id="productModalMedia" class="product-modal-media"></div>
+      <a id="productModalBuy" class="product-modal-buy" href="#" target="_blank" rel="noopener noreferrer">buy</a>
+    </div>
+
+    <script src="/nav.js"></script>
+    <script src="/site.js"></script>
+  </body>
+</html>

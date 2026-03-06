@@ -1,0 +1,57 @@
+{% assign collection_handle = section.settings.collection %}
+{% assign selected_collection = collections[collection_handle] %}
+
+<div id="product" class="ql-products">
+  <p class="ql-title">products</p>
+
+  <div class="ql-products-grid">
+    {% if selected_collection != blank and selected_collection.products_count > 0 %}
+      {% for product in selected_collection.products limit: section.settings.limit %}
+        {% assign variant = product.selected_or_first_available_variant %}
+        <article class="ql-product-card" {{ product.shopify_attributes }}>
+          {% if product.featured_image %}
+            {{ product.featured_image | image_url: width: 800 | image_tag: loading: 'lazy', alt: product.title }}
+          {% endif %}
+
+          <p class="ql-product-name">{{ product.title | downcase }}</p>
+          <p class="ql-sub">{{ variant.price | money }}</p>
+
+          {% if variant %}
+            <a class="ql-buy" href="/cart/{{ variant.id }}:1">buy</a>
+          {% else %}
+            <span class="ql-sub">sold out</span>
+          {% endif %}
+        </article>
+      {% endfor %}
+    {% else %}
+      <p class="ql-sub">no products yet.</p>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Quiet Products",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "limit",
+      "label": "Max products",
+      "min": 2,
+      "max": 24,
+      "step": 1,
+      "default": 8
+    }
+  ],
+  "presets": [
+    {
+      "name": "Quiet Products"
+    }
+  ]
+}
+{% endschema %}
